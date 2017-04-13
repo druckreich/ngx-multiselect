@@ -9,8 +9,8 @@ class Option {
 
 @Component({
   selector: 'sm-multiselect',
-  templateUrl: "./multiselect.component.html",
-  styleUrls: ["./multiselect.component.css"],
+  templateUrl: "./multiselect.html",
+  styleUrls: ["./multiselect.css"],
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MultiSelect), multi: true }
   ]
