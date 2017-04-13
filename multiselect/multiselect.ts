@@ -12,10 +12,10 @@ class Option {
   templateUrl: "./multiselect.component.html",
   styleUrls: ["./multiselect.component.css"],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MultiSelectComponent), multi: true }
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MultiSelect), multi: true }
   ]
 })
-export class MultiSelectComponent implements OnInit, ControlValueAccessor {
+export class MultiSelect implements OnInit, ControlValueAccessor {
   @HostListener('document:click', ['$event.target'])
   public onDocumentClick(targetElement) {
     if (this.elemRef.nativeElement.contains(targetElement)) {
@@ -157,7 +157,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
 
 @NgModule({
   imports: [CommonModule],
-  exports: [MultiSelectComponent],
-  declarations: [MultiSelectComponent]
+  exports: [MultiSelect],
+  declarations: [MultiSelect]
 })
 export class MultiSelectModule { }
