@@ -1,0 +1,36 @@
+<div #container class="multiselect">
+
+    <button type="button" class="btn btn-transparent btn-sm">
+        <div class="label-prefix" *ngIf="labelPrefix">{{labelPrefix}}: </div>
+        <div class="value-as-string">{{valuesAsString}}</div>
+        <span class="glyphicon glyphicon-chevron-down"></span>
+    </button>
+
+    <div #panel class="" [style.display]="panelVisible ? 'block' : 'none'">
+        <div class="multiselect-panel col-lg-4">
+            <div class="multiselect-heading">
+                <form class="form">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" (keyup)="onFilter($event)">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-sm" (click)="onCloseClick($event)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="multiselect-body">
+                <ul class="list-unstyled">
+                    <li class="option" *ngFor="let o of options" [style.display]="isOptionVisible(o) ? 'block' : 'none'" (click)="onOptionClick($event, o)">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" [checked]="isOptionSelected(o)"><span (click)="onLabelClick($event)">{{o[optionLabelKey]}}</span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+.multiselect-panel {
+    position: absolute;
+    z-index: 9999;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0px 2px 2px #e3e3e3;
+    padding: 4px;
+    margin-top: 4px;
+    margin-right: 15px;
+}
+
+.multiselect-body {
+    max-height: 250px;
+    overflow: auto;
+}
+
+.multiselect-heading {
+    margin-bottom: 8px;
+}
+
+.multiselect-heading .input-group-btn {
+    width: 1%;
+}
+
+.btn-transparent {
+    background-color: transparent;
+}
+
+.btn-transparent:hover {
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+.label-prefix {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.value-as-string {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 150px;
+    text-overflow: ellipsis;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.option {
+    padding: 4px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    position: relative;
+}
+
+.option .checkbox {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    z-index: 1001;
+}
+
+.option .checkbox input {
+    position: absolute;
+    margin-left: -20px;
+}
+
+.option .checkbox label {
+    padding-left: 20px;
+}
+
+.option .checkbox label {
+    cursor: default;
+}
+
+.option:hover {
+    background-color: #eee;
+}
