@@ -1,1 +1,1 @@
-export * from './multiselect/multiselect';
+export * from './src/multiselect';
