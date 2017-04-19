@@ -101,7 +101,6 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
   }
 
   onOptionClick($event, option: Option): void {
-    console.log("clicked");
     let index: number = this.getSelectedOptionIndex(option);
     if (index == -1) {
       this.innerValue.push(option[this.valueKey]);
