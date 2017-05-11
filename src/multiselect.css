@@ -42,7 +42,6 @@
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 150px;
     text-overflow: ellipsis;
     margin-right: 4px;
     vertical-align: middle;
