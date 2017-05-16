@@ -43,6 +43,10 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
   @Input()
   defaultLabel: string;
 
+  @Input()
+  selectedOptionsFirst: boolean = true;
+
+  innerOptions: Option[];
   private innerValue: string[];
 
   private changed = new Array<(value: string[]) => void>();
@@ -64,6 +68,7 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('options') && changes['options'].currentValue.length > 0) {
+      this.innerOptions = this.options.concat();
       this.updateLabel();
     }
   }
@@ -88,7 +93,7 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
 
   onFilter(event): void {
     this.filterValue = event.target.value.trim().toLowerCase();
-    this.visibleOptions = this.options.filter((o: Option) => {
+    this.visibleOptions = this.innerOptions.filter((o: Option) => {
       return o[this.optionLabelKey].trim().toLowerCase().indexOf(this.filterValue) != -1;
     });
   }
@@ -127,7 +132,7 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
   }
 
   private updateLabel() {
-    if ((this.options && this.options.length > 0) && (this.innerValue && this.innerValue.length > 0)) {
+    if ((this.innerOptions && this.innerOptions.length > 0) && (this.innerValue && this.innerValue.length > 0)) {
       let labelKey = this.optionShortLabelKey ? this.optionShortLabelKey : this.optionLabelKey;
       let values: string[] = this.innerValue.map((v: string) => {
         let option: Option = this.findOptionByValue(v);
@@ -142,7 +147,15 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
   }
 
   private findOptionByValue(value: string): Option {
-    return this.options.find((o: Option) => o[this.valueKey] == value);
+    return this.innerOptions.find((o: Option) => o[this.valueKey] == value);
+  }
+
+  private sortSelectedOptionsFirst(): void {
+    if (this.selectedOptionsFirst) {
+      let selectedOptions: Option[] = this.innerOptions.filter((o: Option) => this.isOptionSelected(o));
+      let notSelectedOptions: Option[] = this.options.filter((o: Option) => selectedOptions.indexOf(o) < 0);
+      this.innerOptions = [].concat(selectedOptions, notSelectedOptions);
+    }
   }
 
   private hide(): void {
@@ -150,7 +163,9 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
   }
 
   private show(): void {
+    this.sortSelectedOptionsFirst();
     this.panelVisible = true;
+
   }
 }
 

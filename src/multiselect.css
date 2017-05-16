@@ -76,3 +76,8 @@
 .option:hover {
     background-color: #eee;
 }
+
+.option.last-selected {
+    border-bottom: 1px solid #eee;
+}
+
