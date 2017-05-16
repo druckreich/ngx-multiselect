@@ -16,6 +16,7 @@ class Option {
   ]
 })
 export class MultiSelect implements OnInit, ControlValueAccessor {
+  
   @HostListener('document:click', ['$event.target'])
   public onDocumentClick(targetElement) {
     if (this.elemRef.nativeElement.contains(targetElement)) {
@@ -59,6 +60,9 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
   visibleOptions: Option[];
 
   panelVisible: boolean = false;
+
+  // no item is selected
+  noValueSelected: boolean = true;
 
   documentClickListener: any;
 
@@ -141,8 +145,10 @@ export class MultiSelect implements OnInit, ControlValueAccessor {
         }
       });
       this.valuesAsString = values.join(', ');
+      this.noValueSelected = false;
     } else {
       this.valuesAsString = this.defaultLabel;
+      this.noValueSelected = true;
     }
   }
 

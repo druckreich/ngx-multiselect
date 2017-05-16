@@ -1,8 +1,8 @@
-<div #container class="multiselect">
+<div #container class="multiselect" [class.no-value-selected]="noValueSelected">
 
     <button type="button" class="btn btn-transparent btn-sm">
-        <div class="label-prefix" *ngIf="labelPrefix">{{labelPrefix}}: </div>
-        <div class="value-as-string">{{valuesAsString}}</div>
+        <div class="multiselect-label-prefix" *ngIf="labelPrefix">{{labelPrefix}}: </div>
+        <div class="multiselect-label">{{valuesAsString}}</div>
         <span class="glyphicon glyphicon-chevron-down"></span>
     </button>
 
