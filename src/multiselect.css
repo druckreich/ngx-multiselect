@@ -1,7 +1,3 @@
-.no-value-selected {
-    color: #cacaca;
-}
-
 .multiselect-panel {
     position: absolute;
     z-index: 9999;
@@ -31,6 +27,7 @@
     background-color: transparent;
 }
 
+
 .btn-transparent .glyphicon {
     color: rgb(69, 69, 69);
 }
@@ -40,6 +37,12 @@
     background-color: #eee;
     color: rgb(69, 69, 69);
 }
+
+.no-value-selected .multiselect-label-prefix,
+.no-value-selected .multiselect-label {
+    color: #cacaca;
+}
+
 
 .multiselect-label-prefix {
     display: inline-block;
